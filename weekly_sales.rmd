@@ -1,0 +1,90 @@
+---
+title: "Weekly Cafe Sales"
+author: "Tyrae"
+date: "2026-10-17"
+output:
+  html_document:
+    toc: true
+---
+
+AI Assistance Declaration: I used ChatGPT to help draft this documentation and assist with the R script. Prompts included “Help me to write a Cafe Sales R script”. I ran the script in Posit Cloud and inspected its console output and chart. Knitting this report and independently checking the calculations are done by student. 
+
+# Purpose
+
+This project shows a week of made-up cafe cup sales. The script displays the daily sales, calculates the total and daily average, and creates a bar chart.
+
+The goal is to make the script easy to understand and show how R Markdown combines explanations, code, and results.
+
+# Inputs
+
+The data is written directly inside `weekly_sales.R`. No external dataset is needed.
+
+| Day | Cups sold |
+| --- | ---: |
+| Monday | 120 |
+| Tuesday | 135 |
+| Wednesday | 150 |
+| Thursday | 140 |
+| Friday | 210 |
+| Saturday | 280 |
+| Sunday | 240 |
+
+These numbers are fictional. They do not come from a real cafe or contain personal information.
+
+# Requirements
+
+The script uses the `ggplot2` package to create the chart. Rendering this report also requires `rmarkdown` and `knitr`.
+
+Keep `weekly_sales.R` and `weekly_sales.Rmd` in the same folder.
+
+# How the Script Works
+
+## Store the Data
+
+The script creates a data frame called `sales_data`. Its columns contain the day names and the number of cups sold.
+
+The days are stored as a factor with a specific order. This keeps the chart in Monday-to-Sunday order.
+
+## Display the Table
+
+The script uses `print()` to display the sales data in the Console. This makes it easy to check the values used in the chart.
+
+## Calculate the Summary
+
+The script uses `sum()` to calculate the weekly total and `mean()` to calculate the daily average. The displayed average is rounded to one decimal place.
+
+These calculations were checked independently in Sheets.
+
+## Create the Chart
+
+The script uses `ggplot()` and `geom_col()` to create brown bars for the daily sales. Labels above the bars show the supplied cup counts.
+
+The chart includes a title and axis labels so the reader knows what the values represent. The script uses `print(sales_plot)` to display the chart when it is sourced.
+
+# Run the Script and Show Results
+
+The chunk below runs the saved script. Its printed results and chart should appear in the knitted report.
+
+```{r weekly-sales, echo=TRUE, message=FALSE, fig.width=8, fig.height=5}
+source("weekly_sales.R", local = knitr::knit_global())
+```
+
+# Outputs
+
+The script produces:
+
+- A table showing the daily cup sales.
+- A weekly sales total.
+- A daily average rounded to one decimal place.
+- A labeled bar chart comparing the days.
+
+Knitting this document produces `weekly_sales.html`. The script does not save a separate chart image.
+
+# Verification
+
+The script was run in Posit Cloud. The Console displayed the sales data and summary, and the Plots pane displayed the brown bar chart.
+I checked the total and average in Google Sheets and independently with a calculator. Both matched the R output.
+
+# Limitations
+
+The data is made up, so the results cannot explain actual customer behaviour or support real business decisions. This project only demonstrates a simple R workflow and its documentation.
